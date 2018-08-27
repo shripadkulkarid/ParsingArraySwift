@@ -27,11 +27,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             
             let allcontacs = try JSONSerialization.jsonObject(with: allContactsData, options: .allowFragments) as! [String :AnyObject]
             
-            if let arrJSON = allcontacs["contacts"]  {
+            if let arrJSON = allcontacs["contacts"]as? [[String : Any]]  {
                 
                 for index in 0...arrJSON.count-1 {
-                    let aObject = arrJSON[index] as! [String : AnyObject]
-                    
+                   // let aObject = arrJSON[index] as!  [NSObject:AnyObject]
+                    let aObject = arrJSON[index] as [String : AnyObject]
                    names.append(aObject["name"] as! String)
                     contacts.append(aObject["email"] as! String)
                     
